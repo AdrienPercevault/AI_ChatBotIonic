@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chat bot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngFor="let conversation of conversations">
+    <div class="bubble me">
+      {{conversation.message}}
+    </div>
+    <br/>
+    <div class="bubble you">
+      {{conversation.answer}}
+    </div>
+  </div>
+
+  <input ion-text type="text" [(ngModel)]="question">
+  <button icon-only clear color="primary" (click)="ask(question)">
+    <ion-icon name="arrow-dropright-circle"></ion-icon>
+  </button>
+
+</ion-content>
