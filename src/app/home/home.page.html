@@ -16,9 +16,17 @@
     </div>
   </div>
 
-  <input ion-text type="text" [(ngModel)]="question">
-  <button icon-only clear color="primary" (click)="ask(question)">
-    <ion-icon name="arrow-dropright-circle"></ion-icon>
+</ion-content>
+
+<ion-footer>
+
+  <input ion-text type="text" [(ngModel)]="message">
+
+  <button icon-only (click)="getMessage(message)" right>
+    <ion-icon name="send"></ion-icon>
+  </button>
+  <button icon-only (click)="getVoiceMessage()" right>
+    <ion-icon name="mic"></ion-icon>
   </button>
 
-</ion-content>
+</ion-footer>
