@@ -1,34 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Chat bot</ion-title>
+    <ion-title>Home Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div *ngFor="let conversation of conversations">
-    <div class="bubble me">
-      <ion-icon name="person" class="me-icon"></ion-icon>
-      {{conversation.message}}
-    </div>
-
-    <div class="bubble you">
-      <ion-icon name="logo-ionitron" class="you-icon"></ion-icon>
-      {{conversation.answer}}
-    </div>
-  </div>
+  <ion-button routerLink="/manage-bot">Management Bot</ion-button>
+  <ion-button routerLink="/music-bot">Music Bot</ion-button>
+  
+  <ion-button (click)="test()">test</ion-button>
 
 </ion-content>
-
-<ion-footer>
-
-  <ion-input placeholder="Message" type="text" [(ngModel)]="message"></ion-input>
-
-  <button icon-only (click)="getMessage(message)" right>
-    <ion-icon name="send"></ion-icon>
-  </button>
-  <button icon-only (click)="getVoiceMessage()" right>
-    <ion-icon name="mic"></ion-icon>
-  </button>
-
-</ion-footer>

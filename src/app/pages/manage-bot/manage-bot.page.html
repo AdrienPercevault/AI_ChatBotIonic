@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Management Bot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngFor="let conversation of conversations">
+    <div class="bubble me">
+      <ion-icon name="person" class="me-icon"></ion-icon>
+      {{conversation.message}}
+    </div>
+
+    <div class="bubble you">
+      <ion-icon name="logo-ionitron" class="you-icon"></ion-icon>
+      {{conversation.answer}}
+    </div>
+  </div>
+
+</ion-content>
+
+
+<ion-footer>
+
+  <div class="flex-items" padding>
+    <ion-input id="messageInput" [(ngModel)]="message" name="message" class="input_message" placeholder="Message"></ion-input>
+    <ion-icon (click)="getMessage(message)" class="send" name="send"></ion-icon>
+    <ion-icon (click)="getVoiceMessage()" class="send" name="mic"></ion-icon>
+  </div>
+
+</ion-footer>
