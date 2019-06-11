@@ -1,14 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home Page</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title center>Tableau de bord</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
 
-  <ion-button routerLink="/manage-bot">Management Bot</ion-button>
-  <ion-button routerLink="/music-bot">Music Bot</ion-button>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card routerLink="/smalltalk-bot" color="primary">
+        <div class="ion-text-center">
+          <ion-icon name="chatbubbles"></ion-icon>
+        </div>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-card routerLink="/manage-bot" color="secondary">
+        <div class="ion-text-center">
+          <ion-icon name="cog"></ion-icon>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-card routerLink="/music-bot" color="tertiary">
+        <div class="ion-text-center">
+          <ion-icon name="musical-notes"></ion-icon>
+        </div>      
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="6">
+
+    </ion-col>
+  </ion-row>
   
-  <ion-button (click)="test()">test</ion-button>
+  <!-- <ion-button (click)="test()">test</ion-button> -->
 
 </ion-content>

@@ -6,11 +6,12 @@ import { AppLauncher, AppLauncherOptions } from '@ionic-native/app-launcher/ngx'
 declare var ApiAIPromises: any;
 
 @Component({
-  selector: 'app-manage-bot',
-  templateUrl: './manage-bot.page.html',
-  styleUrls: ['./manage-bot.page.scss'],
+  selector: 'app-smalltalk-bot',
+  templateUrl: './smalltalk-bot.page.html',
+  styleUrls: ['./smalltalk-bot.page.scss'],
 })
-export class ManageBotPage {
+export class SmalltalkBotPage {
+
   // List of the user message and answer from the bot
   public conversations: Array<{message: string, answer: string}> = [];
   
@@ -19,21 +20,17 @@ export class ManageBotPage {
 
   constructor(public platform: Platform, 
               public ngZone: NgZone, 
-              public nav: NavController,
-              private appLauncher: AppLauncher) {
+              public nav: NavController) {
     ApiAIPromises.init({
-      clientAccessToken: "81a43e5c580340b982a29d86e67b0233"
-      // clientAccessToken: "41547b48a1004f7193110e5a88074956",
-      // lang: "fr"
-    },
-    (response) => {
+      clientAccessToken: "41547b48a1004f7193110e5a88074956",
+      lang: "fr"
+    }, (response) => {
       console.log(response);
-    },
-    (error) => {
+    }, (error) => {
       console.error(error);
     });
   };
-
+  
   // Message from the user
   getMessage(message) {
     ApiAIPromises.requestText({
@@ -48,9 +45,6 @@ export class ManageBotPage {
         })
       });
       console.log(result)
-      if (result.action == "app.open") {
-        this.openApplication(result.parameters.appName)
-      }
     })
     .catch(error => {
       console.error(error)
@@ -60,8 +54,8 @@ export class ManageBotPage {
   // Voice message from user with SpeechRecognition plugin
   getVoiceMessage() {
     let options = {
-      // language: 'fr-FR'
-      language: 'en-US'
+      language: 'fr-FR'
+      // language: 'en-US'
     }
     this.ngZone.run(()=> {
       SpeechRecognition.startListening().subscribe(matches => {
@@ -70,28 +64,4 @@ export class ManageBotPage {
       });
     });
   }
-
-  openApplication(appName: string) {
-    const options: AppLauncherOptions = {  }
-
-    if (appName == 'Spotify') {
-      options.packageName = 'com.spotify.music'
-    }
-    else if (appName == 'Gmail') {
-      options.packageName = 'com.google.android.gm'
-    }
-    else if (appName == 'youtube' || appName == 'Youtube' || appName == 'YouTube') {
-      options.packageName = 'com.google.android.youtube'
-    }
-    else if (appName == 'discord' || 'Discord') {
-      options.packageName = 'com.discord'
-    }
-
-    this.appLauncher.canLaunch(options)
-      .then((canLaunch: boolean) => console.log(appName + ' is available'))
-      .catch((error: any) => console.error(appName + ' is not available'));
-
-    this.appLauncher.launch(options)
-  }
-
 }

@@ -22,14 +22,10 @@ export class MusicBotPage {
               public ngZone: NgZone, 
               public nav: NavController) {
     ApiAIPromises.init({
-      clientAccessToken: "81a43e5c580340b982a29d86e67b0233" // Management BOT
-      // clientAccessToken: "08b636033f7e43b6ae2e8f05ada6d525" // Music BOT
-      // lang: "fr"
-    },
-    (response) => {
+      clientAccessToken: "08b636033f7e43b6ae2e8f05ada6d525"
+    }, (response) => {
       console.log(response);
-    },
-    (error) => {
+    }, (error) => {
       console.error(error);
     });
   };
